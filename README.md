@@ -202,7 +202,7 @@ connectDB()
 ### Creating HealthCheck API
 
 1. Controllers : write the logic (function), i.e 200, message : server running okay...
-   > instead of try catch method prefer higher order function.
+> instead of try catch method prefer higher order function.
 
 ```
 import {ApiResponse} from '../utils/api-response.js';
@@ -231,7 +231,7 @@ export default router;
 ```
 
 3. HOW HIGHER ORDER FUNCTION
-   > create this in controller , which goes to asyncHandler for taking response
+> create this in controller , which goes to asyncHandler for taking response
 
 ```
 const healthCheck = asyncHandler(async(req , res)=>{
@@ -274,12 +274,12 @@ export {asyncHandler};
 - anything after it saving data is post hooks.
 
 2. To encrypt any field use :
-   > node.bcrypt.js or npm i bcrypt.
+> node.bcrypt.js or npm i bcrypt.
 
 - in this case we want to hash the password before saving the password into SAVE or we can say we use in pre hook phase.
 
 ```
-// this will hash the password again n again so if condn is required to check
+this will hash the password again n again so if condn is required to check
 
 userSchema.pre("save", async function(next){
     if(!this.isModified("password"))return next();
@@ -287,7 +287,7 @@ userSchema.pre("save", async function(next){
     next();
 });
 
-// this is the method present with schema to check the password weather it is true or false.
+ this is the method present with schema to check the password weather it is true or false.
 
 userSchema.methods.isPasswordCorrect = async function (password){
     return await brcypt.compare(password , this.password);
@@ -326,10 +326,10 @@ fjbiwrbiruwb.fwbeiywfi.wchbiwubicb
 ---
 
 2. without data : generate a long string , use for one time or very less time
-   client send this data to server they matches with server and server looks into database if matches they send back what they want.
+client send this data to server they matches with server and server looks into database if matches they send back what they want.
 
 - jsonwebtoken npm this is used to create with data token
-  > npm i jsonwebtoken
+> npm i jsonwebtoken
 
 ### GO TO .env file n save
 
@@ -341,7 +341,8 @@ fjbiwrbiruwb.fwbeiywfi.wchbiwubicb
 
 ---
 
-// go to https://github.com/vercel/ms and check ways to define these variables.
+// go to https://github.com/vercel/ms 
+and check ways to define these variables.
 
 ```
 userSchema.methods.generateAccessToken = function(){
@@ -396,7 +397,7 @@ Server issues new Access Token
 ```
 
 - crypto nodejs built in node library use to make without data token,This method creates a temporary verification/reset token for a user. Such tokens are commonly used in flows like password reset, email verification, or account activation.
-  The function generates a random token, hashes it for secure storage, and sets an expiration time.
+The function generates a random token, hashes it for secure storage, and sets an expiration time.
 
 ```
 userSchema.methods.generateTemporaryToken = function (){
@@ -437,7 +438,7 @@ Temporary Token
 - send response back to the request
 
 1. install mailgen npm
-   > npm install mailgen --save
+> npm install mailgen --save
 
 - go to utils, mail.js , and generate a email
   > Nodemailer npm
@@ -503,6 +504,7 @@ const sendEmail = async (options) => {
 }
 
 ```
+- `POST /register` - User registration ✅
 
 2. auth.controllers.js
 
@@ -536,6 +538,8 @@ npm i cookie-parser
 - after successfully , give them access and refresh token. and and send response 
 - also update auth.routes.js , also write custom validation and check response.
 
+- `POST /login` - User authentication ✅
+
 ## write auth middleware 
 means to check inbetween sending from client to server and check weather they are going with accesstoken or not 
 - every contollers has to check weather they have accesstoken or not , repeated task thats why we will check in between of response with one single file
@@ -550,3 +554,41 @@ means to check inbetween sending from client to server and check weather they ar
 
 # logout
 client sends reqeust to server for logout, auth.middleware intercepts inbetween and checks if they are registered user or not , having accesstoken if yes then logged out successfully.
+
+
+- `POST /logout` - User logout (secured) ✅
+
+# GetCurrentUser 
+- req.user (auth.controllers.js) 
+
+- `GET /current-user` - Get current user info (secured)✅
+
+# VerifyEmail
+1. how can be access url
+```
+http://localhost:3001/api/v1/users/verify-email/972d82e53cab6fc55ff24bc3761e3fd9bb6d1950
+```
+2. 
+- `GET /verify-email/:verificationToken` ✅
+- Email verification
+
+
+# resend-email-verification
+
+- `POST /resend-email-verification` - Resend verification email (secured)✅
+
+# Refresh_access_token
+
+- `POST /refresh-token` - Refresh access token ✅
+
+# ChangePassword
+
+- `POST /change-password` - Change user password (secured)  ✅
+
+# forgot-password
+
+- `POST /forgot-password` - Request password reset  ✅
+
+# reset-password
+
+- `POST /reset-password/:resetToken` - Reset forgotten password  ✅
