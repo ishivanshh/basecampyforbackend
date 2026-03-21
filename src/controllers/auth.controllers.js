@@ -239,7 +239,6 @@ const resendEmailVerification = asyncHandler(async (req, res) => {
     )
 });
 
-
 const refreshAccessToken = asyncHandler(async (req, res) => {
   const incomingRefreshToken =
     req.cookies.refreshToken || req.body.refreshToken;
@@ -289,7 +288,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid refresh token");
   }
 });
-
 
 const forgotPasswordRequest = asyncHandler(async (req, res) => {
   const { email } = req.body
@@ -380,7 +378,7 @@ const changeCurrentPassword = asyncHandler(async (req , res)=>{
           "Password Changed successfully!",
         ),
       );
-})
+});
 
 export {
   registerUser,
