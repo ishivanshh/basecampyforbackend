@@ -23,10 +23,14 @@ app.use(cors({
 
 import healthCheckRouter from "./controllers/healthcheck.controllers.js";
 import authRouter from "./routes/auth.routes.js";
+import proejctRouter from "./routes/proejct.routes.js";
+
 import { cookie } from "express-validator";
 
 app.use("/api/v1/healthcheck",healthCheckRouter);
 app.use("/api/v1/auth",authRouter);
+app.use("api/v1/projects", proejctRouter);
+
 
 app.get('/', (req, res) => {
   res.send('Nodemon is working!')

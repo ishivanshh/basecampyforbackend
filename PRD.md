@@ -126,6 +126,7 @@ Project Camp Backend is a RESTful API service designed to support collaborative 
 
 #### 4.2 Permission Matrix
 
+
 | Feature                    | Admin | Project Admin | Member |
 | -------------------------- | ----- | ------------- | ------ |
 | Create Project             | ✓     | ✗             | ✗      |
@@ -137,6 +138,7 @@ Project Camp Backend is a RESTful API service designed to support collaborative 
 | Create/Delete Subtasks     | ✓     | ✓             | ✗      |
 | Create/Update/Delete Notes | ✓     | ✗             | ✗      |
 | View Notes                 | ✓     | ✓             | ✓      |
+
 
 #### 4.3 Data Models
 
@@ -178,3 +180,4 @@ Project Camp Backend is a RESTful API service designed to support collaborative 
 - File attachment capability for enhanced collaboration
 - Email notification system for user verification and password reset
 - Comprehensive API documentation through endpoint structure
+
