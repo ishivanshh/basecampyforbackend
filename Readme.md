@@ -181,3 +181,4 @@ Project Camp Backend is a RESTful API service designed to support collaborative 
 - Email notification system for user verification and password reset
 - Comprehensive API documentation through endpoint structure
 
+## Testing : POSTMAN
